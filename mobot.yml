@@ -1,0 +1,9 @@
+provider:
+  name: openfaas
+functions:
+  mobot:
+    lang: python3-http
+    handler: ./mobot
+    image: mcores/mobot:latest
+    secrets:
+      - mobot-telegram-bot-token

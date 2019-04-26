@@ -1,0 +1,12 @@
+language: python3-http
+fprocess: python index.py
+build_options:
+  - name: dev
+    packages: 
+      - make
+      - automake
+      - gcc
+      - g++
+      - python3-dev
+      - libffi-dev
+      - git
