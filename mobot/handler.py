@@ -14,6 +14,7 @@ with open('/var/openfaas/secrets/mobot-telegram-bot-token') as rf:
 top_patterns = [
     re.compile(r'.*(?<![不别])想+(早点|快点)*(下班|回家|睡觉|补休|摸鱼|返屋企)(?![吗么]).*', re.M),
     re.compile(r'.*(?<=[好很])(困|想睡觉|眼瞓|累)(?![吗么]).*', re.M),
+    re.compile(r'.*(?<=[不])想+(上班|加班|醒目|敬业)(?![吗么]).*', re.M),
 ]
 group_patterns = []
 
@@ -51,7 +52,7 @@ def handle(event, context):
 
     if update.message:
         message = update.message
-        if filter_text(message.text):
+        if message.text and filter_text(message.text):
             message.reply_text('虽然我很赞同你的想法，但很遗憾，我现在还没有时间观念。摸了', quote=True)
 
     return {
